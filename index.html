@@ -1,0 +1,213 @@
+<html>
+<head>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+	<link rel = "stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>My Chart</title>
+</head>
+<body>
+	<div class = "container-lg">
+		<h1><center>
+		<a href="#" class="btn btn-light btn-lg " role="button" aria-pressed="false" onclick="updateChart('450')">450k/day</a>
+		<a href="#" class="btn btn-light btn-lg " role="button" aria-pressed="false" onclick="updateChart('500')">500k/day</a>
+		<a href="#" class="btn btn-light btn-lg " role="button" aria-pressed="true" onclick="updateChart('550')">550k/day</a>
+		<a href="#" class="btn btn-light btn-lg " role="button" aria-pressed="false" onclick="updateChart('600')">600k/day</a>
+		<a href="#" class="btn btn-light btn-lg " role="button" aria-pressed="false" onclick="updateChart('650')">650k/day</a>
+		<a href="#" class="btn btn-light btn-lg " role="button" aria-pressed="false" onclick="updateChart('700')">700k/day</a>
+		<a href="#" class="btn btn-light btn-lg " role="button" aria-pressed="false" onclick="updateChart('750')">750k/day</a>
+		<a href="#" class="btn btn-light btn-lg " role="button" aria-pressed="false" onclick="updateChart('800')">800k/day</a></center></h1>
+		<canvas id = "myChart"></canvas>
+		<h3><center>The current 7 day average is around 450k doses/day</h3></center>
+		<center>This graph is assuming second doses can be given anywhere between 3 and 12 weeks after the first dose</center>
+		<center>Higher doses/day assume that there is a linear increase at the current rate of increase until the target number is reached</center>
+	</div>
+	
+	<script>
+		d3.csv('https://raw.githubusercontent.com/AlexZTate/UKVaccineStats/main/vaccine%20stats.csv').then(makeChart);
+		var value = "0";
+function makeChart(Vaccines) {
+		var dateLabels = Vaccines.map(function(d) {return d.date});
+		var firstData = Vaccines.map(function(d) {return +(d.first)});
+		var secondData = Vaccines.map(function(d) {return +(d.second)});
+		var immunityData = Vaccines.map(function(d) {return +(d.immunity)});
+		var gonetofour = Vaccines.map(function(d) {return +(d.gonetofour)});
+		var gfivetonine = Vaccines.map(function(d) {return +(d.gfivetonine)});
+		var galladults = Vaccines.map(function(d) {return +(d.galladults)});
+		
+		if (value == "450") {
+			var firstEstimateData = Vaccines.map(function(d) {return +(d.ivvfirstEstimate)});
+			var secondEstimateData = Vaccines.map(function(d) {return +(d.ivvsecondEstimate)});
+			var immunityEstimateData = Vaccines.map(function(d) {return +(d.ivvimmunityEstimate)});
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 450k/day';
+		} else if (value == "500") {
+			var firstEstimateData = Vaccines.map(function(d) {return +(d.vfirstEstimate)});
+			var secondEstimateData = Vaccines.map(function(d) {return +(d.vsecondEstimate)});
+			var immunityEstimateData = Vaccines.map(function(d) {return +(d.vimmunityEstimate)});
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 500k/day';
+		} else if (value == "550") {
+			var firstEstimateData = Vaccines.map(function(d) {return +(d.vvfirstestimate)});
+			var secondEstimateData = Vaccines.map(function(d) {return +(d.vvsecondEstimate)});
+			var immunityEstimateData = Vaccines.map(function(d) {return +(d.vvimmunityEstimate)});
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 550k/day';
+		} else if (value == "600") {
+			var firstEstimateData = Vaccines.map(function(d) {return +(d.vifirstEstimate)});
+			var secondEstimateData = Vaccines.map(function(d) {return +(d.visecondEstimate)});
+			var immunityEstimateData = Vaccines.map(function(d) {return +(d.viimmunityEstimate)});
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 600k/day';
+		} else if (value == "650") {
+			var firstEstimateData = Vaccines.map(function(d) {return +(d.vivfirstEstimate)});
+			var secondEstimateData = Vaccines.map(function(d) {return +(d.vivsecondEstimate)});
+			var immunityEstimateData = Vaccines.map(function(d) {return +(d.vivimmunityEstimate)});
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 650k/day';
+		} else if (value == "700") {
+			var firstEstimateData = Vaccines.map(function(d) {return +(d.viifirstEstimate)});
+			var secondEstimateData = Vaccines.map(function(d) {return +(d.viisecondEstimate)});
+			var immunityEstimateData = Vaccines.map(function(d) {return +(d.viiimmunityEstimate)});
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 700k/day';
+		} else if (value == "750") {
+			var firstEstimateData = Vaccines.map(function(d) {return +(d.viivfirstEstimate)});
+			var secondEstimateData = Vaccines.map(function(d) {return +(d.viivsecondEstimate)});
+			var immunityEstimateData = Vaccines.map(function(d) {return +(d.viivimmunityEstimate)});
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 750k/day';
+		} else if (value == "800") {
+			var firstEstimateData = Vaccines.map(function(d) {return +(d.viiifirstEstimate)});
+			var secondEstimateData = Vaccines.map(function(d) {return +(d.viiisecondEstimate)});
+			var immunityEstimateData = Vaccines.map(function(d) {return +(d.viiiimmunityEstimate)});
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 800k/day';
+		} else if (value == "0") {
+			var firstEstimateData = [];
+			var secondEstimateData = [];
+			var immunityEstimateData = [];
+			var firstData = [];
+			var secondData = [];
+			var immunityData = [];
+			var bigBoiTitle = 'Click on a button to get the data';
+		}
+		let myChart = document.getElementById('myChart').getContext('2d');
+
+		var i;
+		for (i = 0; i < firstData.length; i++) {
+			if (firstData[i] == 0) {
+				firstData[i] = null
+			}
+			if (secondData[i] == 0) {
+				secondData[i] = null
+			}
+			if (secondEstimateData[i] == 0) {
+				secondEstimateData[i] = null
+			}
+			if (firstEstimateData[i] == 0) {
+				firstEstimateData[i] = null
+			}
+			if (immunityData[i] == 0) {
+				immunityData[i] = null
+			}
+			if (immunityEstimateData[i] == 0) {
+				immunityEstimateData[i] = null
+			}
+		}
+		let bigBoiChart = new Chart(myChart, {
+			type: 'line', 
+			data: {
+				labels:dateLabels,
+				datasets:[{
+					label: 'First Doses',
+					fill:false,
+					pointRadius: 0,
+					borderColor: 'rgba(0,250,150,1)',
+					data: firstData,
+			},{
+					label: 'Second Doses',
+					fill:false,
+					pointRadius: 0,
+					borderColor: 'rgba(250,150,0,1)',
+					data: secondData
+			},{
+					label: 'First Doses Estimate',
+					fill:false,
+					pointRadius: 0,
+					borderColor: 'rgba(0,250,150,0.25)',
+					data: firstEstimateData
+			},{
+					label: 'Second Doses Esimate',
+					fill:false,
+					pointRadius: 0,
+					borderColor: 'rgba(250,150,0,0.25)',
+					data: secondEstimateData
+			},{
+					label: 'Immunity',
+					fill:false,
+					pointRadius: 0,
+					borderColor: 'rgba(0,0,0,1)',
+					data: immunityData
+			},{
+					label: 'Immunity Estimate',
+					fill:false,
+					pointRadius: 0,
+					borderColor: 'rgba(0,0,0,0.25)',
+					data: immunityEstimateData
+			},{
+					label: 'All Adults',
+					fill:false,
+					pointRadius: 0,
+					borderColor: 'rgba(0,0,150,1)',
+					data: galladults
+			},{
+					label: 'Groups 5-9',
+					fill:false,
+					pointRadius: 0,
+					borderColor: 'rgba(0,150,0,1)',
+					data: gfivetonine
+			},{
+					label: 'Groups 1-4',
+					fill:false,
+					pointRadius: 0,
+					borderColor: 'rgba(150,0,0,1)',
+					data: gonetofour
+			}]
+			},
+			options: {
+				title: {
+				display: true,
+				fontSize: 20,
+					text: bigBoiTitle,
+					position: 'top'
+				},
+				legend: {position: 'bottom'},
+				events: [],
+				showTooltips: {enabled: false},
+				hover: {mode: null},
+				//: false,
+				animation: false,
+				color: 'green',
+				spanGaps: true,
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true,
+							max: 55000000
+						}
+					}],
+					xAxes: [{
+						ticks: {
+							autoSkip: true,
+							maxTicksLimit: 30,
+							min: '14/12/2020',
+							max: '10/09/2021'
+						}
+					}]
+				}
+			}
+		});
+
+}
+	
+function updateChart(newValue) {
+	value = newValue;
+	d3.csv('https://raw.githubusercontent.com/AlexZTate/UKVaccineStats/main/vaccine%20stats.csv').then(makeChart);
+
+}
+	
+	</script>
+</body>
+</html>
