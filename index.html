@@ -3,7 +3,7 @@
 	<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	<script src = "https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
 	<link rel = "stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<title>My Chart</title>
+	<title>Projection of Immunity due to Vaccines in the UK</title>
 </head>
 <body>
 	<div class = "container-lg">
@@ -43,7 +43,7 @@ function makeChart(Vaccines) {
 			var firstEstimateData = Vaccines.map(function(d) {return +(d.ivvfirstEstimate)});
 			var secondEstimateData = Vaccines.map(function(d) {return +(d.ivvsecondEstimate)});
 			var immunityEstimateData = Vaccines.map(function(d) {return +(d.ivvimmunityEstimate)});
-			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 450k/day';
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - up to 450k/day';
 			var bigBoi2Title = 'Doses over time until limit - 450k/day';
 			var dosesLimitLegend = 'Daily doses increasing until 450k/day';
 		} else if (value == "500") {
@@ -51,7 +51,7 @@ function makeChart(Vaccines) {
 			var firstEstimateData = Vaccines.map(function(d) {return +(d.vfirstEstimate)});
 			var secondEstimateData = Vaccines.map(function(d) {return +(d.vsecondEstimate)});
 			var immunityEstimateData = Vaccines.map(function(d) {return +(d.vimmunityEstimate)});
-			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 500k/day';
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - up to 500k/day';
 			var bigBoi2Title = 'Doses over time until limit - 500k/day';
 			var dosesLimitLegend = 'Daily doses increasing until 500k/day';
 		} else if (value == "550") {
@@ -59,7 +59,7 @@ function makeChart(Vaccines) {
 			var firstEstimateData = Vaccines.map(function(d) {return +(d.vvfirstestimate)});
 			var secondEstimateData = Vaccines.map(function(d) {return +(d.vvsecondEstimate)});
 			var immunityEstimateData = Vaccines.map(function(d) {return +(d.vvimmunityEstimate)});
-			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 550k/day';
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - up to 550k/day';
 			var bigBoi2Title = 'Doses over time until limit - 550k/day';
 			var dosesLimitLegend = 'Daily doses increasing until 550k/day';
 		} else if (value == "600") {
@@ -67,7 +67,7 @@ function makeChart(Vaccines) {
 			var firstEstimateData = Vaccines.map(function(d) {return +(d.vifirstEstimate)});
 			var secondEstimateData = Vaccines.map(function(d) {return +(d.visecondEstimate)});
 			var immunityEstimateData = Vaccines.map(function(d) {return +(d.viimmunityEstimate)});
-			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 600k/day';
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - up to 600k/day';
 			var bigBoi2Title = 'Doses over time until limit - 600k/day';
 			var dosesLimitLegend = 'Daily doses increasing until 600k/day';
 		} else if (value == "650") {
@@ -75,7 +75,7 @@ function makeChart(Vaccines) {
 			var firstEstimateData = Vaccines.map(function(d) {return +(d.vivfirstEstimate)});
 			var secondEstimateData = Vaccines.map(function(d) {return +(d.vivsecondEstimate)});
 			var immunityEstimateData = Vaccines.map(function(d) {return +(d.vivimmunityEstimate)});
-			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 650k/day';
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - up to 650k/day';
 			var bigBoi2Title = 'Doses over time until limit - 650k/day';
 			var dosesLimitLegend = 'Daily doses increasing until 650k/day';
 		} else if (value == "700") {
@@ -83,7 +83,7 @@ function makeChart(Vaccines) {
 			var firstEstimateData = Vaccines.map(function(d) {return +(d.viifirstEstimate)});
 			var secondEstimateData = Vaccines.map(function(d) {return +(d.viisecondEstimate)});
 			var immunityEstimateData = Vaccines.map(function(d) {return +(d.viiimmunityEstimate)});
-			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 700k/day';
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - up to 700k/day';
 			var bigBoi2Title = 'Doses over time until limit - 700k/day';
 			var dosesLimitLegend = 'Daily doses increasing until 700k/day';
 		} else if (value == "750") {
@@ -91,7 +91,7 @@ function makeChart(Vaccines) {
 			var firstEstimateData = Vaccines.map(function(d) {return +(d.viivfirstEstimate)});
 			var secondEstimateData = Vaccines.map(function(d) {return +(d.viivsecondEstimate)});
 			var immunityEstimateData = Vaccines.map(function(d) {return +(d.viivimmunityEstimate)});
-			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 750k/day';
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - up to 750k/day';
 			var bigBoi2Title = 'Doses over time until limit - 750/day';
 			var dosesLimitLegend = 'Daily doses increasing until 750/day';
 		} else if (value == "800") {
@@ -99,7 +99,7 @@ function makeChart(Vaccines) {
 			var firstEstimateData = Vaccines.map(function(d) {return +(d.viiifirstEstimate)});
 			var secondEstimateData = Vaccines.map(function(d) {return +(d.viiisecondEstimate)});
 			var immunityEstimateData = Vaccines.map(function(d) {return +(d.viiiimmunityEstimate)});
-			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - 800k/day';
+			var bigBoiTitle = 'Immunity due to vaccines in the UK, based on the rate administered - up to 800k/day';
 			var bigBoi2Title = 'Doses over time until limit - 800k/day';
 			var dosesLimitLegend = 'Daily doses increasing until 800k/day';
 		} else if (value == "0") {
@@ -221,9 +221,9 @@ function makeChart(Vaccines) {
 					xAxes: [{
 						ticks: {
 							autoSkip: true,
-							maxTicksLimit: 30,
-							min: '14/12/2020',
-							max: '10/09/2021'
+							maxTicksLimit: 34,
+							min: '11/01/2021',
+							max: '06/09/2021'
 						}
 					}]
 				}
